@@ -1,0 +1,25 @@
+Text: Represents plain text. This is used for general suggestions.
+Method: Represents a method or function.
+Function: Represents a function.
+Constructor: Represents a constructor.
+Field: Represents a field, such as a property of an object or class.
+Variable: Represents a variable.
+Class: Represents a class or constructor function.
+Interface: Represents an interface.
+Module: Represents a module, namespace, or package.
+Property: Represents a property of an object or class.
+Unit: Represents a unit, such as a method in Java.
+Value: Represents a value, such as a constant.
+Enum: Represents an enumeration type.
+Keyword: Represents a keyword.
+Snippet: Represents a code snippet.
+Color: Represents a color.
+File: Represents a file.
+Reference: Represents a reference to another symbol.
+Folder: Represents a folder.
+EnumMember: Represents an enumeration member.
+Constant: Represents a constant.
+Struct: Represents a struct.
+Event: Represents an event.
+Operator: Represents an operator.
+TypeParameter: Represents a type parameter.
