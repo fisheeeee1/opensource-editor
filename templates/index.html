@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monaco Editor Luau Suggestions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.27.0/min/vs/editor/editor.main.css"> // and this too
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #2b2b2b;
+    }
+
+    #editor {
+        height: 100vh;
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+<div id="editor"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.27.0/min/vs/loader.js"></script> // please dont touch this
+<script>
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.27.0/min/vs' }}); // also dont touch this
+    require(['vs/editor/editor.main'], function () {
+        monaco.languages.register({ id: 'luau' });
+
+        // Define Luau suggestions for functions, objects, and libraries
+        monaco.languages.registerCompletionItemProvider('luau', {
+            provideCompletionItems: function (model, position) {
+                return {
+                    suggestions: [
+                        // Functions
+                        {
+                            label: 'print',
+                            kind: monaco.languages.CompletionItemKind.Function,
+                            insertText: 'print()',
+                            detail: 'Prints a message to the console',
+                            documentation: 'print(message: any) -> void',
+                            sortText: '001'
+                        },
+                        {
+                            label: 'wait',
+                            kind: monaco.languages.CompletionItemKind.Function,
+                            insertText: 'wait(seconds)',
+                            detail: 'Waits for a specified number of seconds',
+                            documentation: 'wait(seconds: number) -> void',
+                            sortText: '002'
+                        },
+                        // Objects
+                        {
+                            label: 'game',
+                            kind: monaco.languages.CompletionItemKind.Module,
+                            insertText: 'game',
+                            detail: 'The root object of the game',
+                            documentation: '',
+                            sortText: '003'
+                        },
+                        {
+                            label: 'workspace',
+                            kind: monaco.languages.CompletionItemKind.Module,
+                            insertText: 'workspace',
+                            detail: 'The workspace object',
+                            documentation: '',
+                            sortText: '004'
+                        },
+                        // Libraries
+                        {
+                            label: 'math',
+                            kind: monaco.languages.CompletionItemKind.Module,
+                            insertText: 'math',
+                            detail: 'The math library',
+                            documentation: '',
+                            sortText: '005'
+                        },
+                        {
+                            label: 'table',
+                            kind: monaco.languages.CompletionItemKind.Module,
+                            insertText: 'table',
+                            detail: 'The table library',
+                            documentation: '',
+                            sortText: '006'
+                        },
+                        {
+                            label: 'gagedigedagedago',
+                            kind: monaco.languages.CompletionItemKind.Function,
+                            insertText: 'gagedigedagedago',
+                            detail: 'i got married a long time ago',
+                            documentation: '',
+                            sortText: '007'
+                        }, // remeber to put a comma here if your going to make a new suggestion
+                        {
+                            label: 'example', // title
+                            kind: monaco.languages.CompletionItemKind.Function,
+                            insertText: 'example', // text when pressed enter on
+                            detail: 'Hello, World!', // desc
+                            documentation: '', // useless, but can be used for the future c:
+                            sortText: '008' // id (make sure its in order)
+                        }
+                    ]
+                };
+            }
+        });
+
+        var editor = monaco.editor.create(document.getElementById('editor'), {
+            value: "-- Enter your Luau code here...", // you can just change this
+            language: 'luau', // language here
+            theme: 'vs-dark',
+            automaticLayout: true,
+            suggest: {
+                showIcons: true // you cant turn this off if you dont want the icons, but i like them
+            }
+        });
+    });
+</script>
+</body>
+</html>
